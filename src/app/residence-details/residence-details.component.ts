@@ -9,7 +9,7 @@ import { Residence } from '../core/models/Residence';
 })
 export class ResidenceDetailsComponent {
   id:number|undefined;
-  res!:Residence;
+  res:Residence|undefined;
    listResidences: Residence[] = [
       {
         id: 1,
@@ -44,7 +44,9 @@ constructor(private act:ActivatedRoute){}
 
 ngOnInit(){
   this.id=this.act.snapshot.params['id'];
-  this.act.paramMap.subscribe(param=>this.id= Number (param.get('id')))
-  this.res=this.listResidences.filter(res=>res.id===this.id)[0]
+  this.act.paramMap.subscribe(param=>{this.id= Number (param.get('id'));
+    this.res=this.listResidences.find(res=>res.id===this.id)
+  })
+ 
 }
 }
