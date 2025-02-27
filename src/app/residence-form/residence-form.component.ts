@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ResidenceService } from '../core/services/residence.service';
 
 @Component({
   selector: 'app-residence-form',
@@ -9,7 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class ResidenceFormComponent {
 
 resForm!:FormGroup;
-
+constructor(private rs:ResidenceService){}
   ngOnInit(){
 
     this.resForm= new FormGroup({
@@ -32,6 +33,11 @@ resForm!:FormGroup;
   }
 
   getFormValue(){
-    return console.log(this.resForm.get('name')?.value)
+    return console.log(this.resForm.value)
+  }
+
+
+  add(){
+    this.rs.addResidence(this.resForm.value).subscribe(()=>alert("addes with succes"))
   }
 }
