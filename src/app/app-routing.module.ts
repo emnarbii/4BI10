@@ -5,23 +5,27 @@ import { ApartementComponent } from './apartement/apartement.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ResidenceDetailsComponent } from './residence-details/residence-details.component';
+import { ResidenceFormComponent } from './residence-form/residence-form.component';
+import { ApartmentFormComponent } from './apartment-form/apartment-form.component';
 
 const routes: Routes = [
-  {path:'',redirectTo:'residences',pathMatch:"full"},
-  {path:'home', component:HomeComponent},
-  {path:'residences', component:ResidencesComponent, children:[
-    {path:"details/:id", component:ResidenceDetailsComponent},
-  ]},
+  { path: '', redirectTo: 'residences', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  {
+    path: 'residences',
+    component: ResidencesComponent,
+    children: [{ path: 'details/:id', component: ResidenceDetailsComponent }],
+  },
+  {path:"addApartment/:id", component:ApartmentFormComponent},
 
-  
   // {path:"details/:id", component:ResidenceDetailsComponent},
-  {path:'apartments', component:ApartementComponent},
-  {path:"**", component:NotFoundComponent},
-
+  { path: 'apartments', component: ApartementComponent },
+  { path: 'addResidence', component: ResidenceFormComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

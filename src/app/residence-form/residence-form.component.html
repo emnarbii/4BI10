@@ -1,0 +1,100 @@
+<p>Add residence</p>
+
+<form [formGroup]="resForm">
+  <div class="mb-3">
+    <label for="exampleInputName1" class="form-label">Name</label>
+    <input
+      type="Name"
+      class="form-control"
+      id="exampleInputName1"
+      formControlName="name"
+    />
+  </div>
+  <div
+    id="nameErrors"
+    *ngIf="resForm.get('name')?.invalid && resForm.get('name')?.touched"
+  >
+    <span *ngIf="resForm.get('name')?.hasError('required')" style="color: red">
+      the name is required</span
+    >
+    <!-- <span *ngIf="name?.hasError('required')" style="color:red"> the name is required</span>
+    <span *ngIf="name?.errors?.['required']" style="color:red"> the name is required</span> -->
+    <span *ngIf="resForm.get('name')?.hasError('pattern')" style="color: red">
+      the name must start with upperCase</span
+    >
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputAddress1" class="form-label">Address</label>
+    <input
+      type="Address"
+      class="form-control"
+      id="exampleInputAddress1"
+      formControlName="address"
+    />
+  </div>
+  <div
+    id="nameErrors"
+    *ngIf="resForm.get('address')?.invalid && resForm.get('address')?.touched"
+  >
+    <span
+      *ngIf="resForm.get('address')?.hasError('required')"
+      style="color: red"
+    >
+      the address is required</span
+    >
+
+    <span
+      *ngIf="resForm.get('address')?.hasError('minlength')"
+      style="color: red"
+    >
+      the addres must has at least 5 caracters</span
+    >
+    <span
+      *ngIf="resForm.get('address')?.hasError('maxlength')"
+      style="color: red"
+    >
+      the addres must has at most 25 caracters</span
+    >
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputStatus1" class="form-label">Status</label>
+    <input
+      type="Status"
+      class="form-control"
+      id="exampleInputStatus1"
+      formControlName="status"
+    />
+  </div>
+  <div
+    id="nameErrors"
+    *ngIf="resForm.get('status')?.invalid && resForm.get('status')?.touched"
+  >
+    <span
+      *ngIf="resForm.get('status')?.hasError('required')"
+      style="color: red"
+    >
+      the status is required</span
+    >
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputImage1" class="form-label">Image</label>
+    <input
+      type="file"
+      class="form-control"
+      id="exampleInputImage1"
+      formControlName="image"
+    />
+  </div>
+  <div
+    id="nameErrors"
+    *ngIf="resForm.get('image')?.invalid && resForm.get('image')?.touched"
+  >
+    <span *ngIf="resForm.get('image')?.hasError('required')" style="color: red">
+      the image is required</span
+    >
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="resForm!.invalid">
+    Submit
+  </button>
+</form>
